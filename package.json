@@ -1,0 +1,51 @@
+{
+  "name": "mfe-basket",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3005",
+    "build": "next build",
+    "build:analyze": "cp .env.analyze.local .env.local && next build",
+    "build:qa": "cp .env.qa.local .env.local && next build",
+    "build:prod": "cp .env.prod.local .env.local && next build",
+    "start": "next start --port 3005",
+    "lint": "eslint --ext .ts,.tsx",
+    "stylelint": "stylelint **/*.{scss,css}",
+    "stylelint:fix": "stylelint --fix **/*.{scss,css}"
+  },
+  "dependencies": {
+    "@module-federation/nextjs-mf": "6.2.1",
+    "@next/bundle-analyzer": "13.1.6",
+    "eslint-config-next": "13.2.3",
+    "next": "13.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "swiper": "8.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "18.15.3",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@typescript-eslint/eslint-plugin": "5.55.0",
+    "@typescript-eslint/parser": "5.55.0",
+    "critters": "0.0.16",
+    "css-loader": "6.7.3",
+    "eslint": "8.36.0",
+    "eslint-config-prettier": "8.7.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.32.2",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.0",
+    "prettier": "2.8.5",
+    "sass": "1.59.2",
+    "sass-loader": "13.2.0",
+    "style-loader": "3.3.2",
+    "stylelint": "15.3.0",
+    "stylelint-config-recommended-scss": "9.0.1",
+    "stylelint-scss": "4.5.0",
+    "typescript": "5.0.2",
+    "webpack": "5.72.1",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.9.3"
+  }
+}

@@ -1,0 +1,26 @@
+// Default styles for the div element output from Html.DisplayBackgroundImage
+[data-bgset] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+
+.lazyloaded {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.content-chapter img[data-sizes='auto'],
+img[data-sizes='auto'].fiftyfifty__image--constrained {
+  display: block;
+  width: 100%;
+}

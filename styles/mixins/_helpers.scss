@@ -1,0 +1,18 @@
+@mixin border-box-children {
+  *,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+@mixin reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin keyboard-focus($outline-color: null) {
+  outline: 2px dashed $outline-color;
+  outline-offset: -1px;
+}

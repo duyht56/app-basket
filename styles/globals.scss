@@ -1,0 +1,48 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Medium;
+  font-size: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #eaeef2;
+  margin: 0 45px 0 15px
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(1,30,65,.15);
+  border-radius: 10px;
+  &:hover{
+    background: rgba(1,30,65,.25)
+  }
+}

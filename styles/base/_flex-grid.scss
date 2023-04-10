@@ -1,0 +1,63 @@
+// Flex grid
+// Use the above column classes with a wrapping .flexGrid element and .flexGrid-item
+// classes to create a grid where grid items are stretched to the height of the
+// tallest in each row
+$grid-columns: 12 !default;
+
+.flexGrid {
+  margin-bottom: -20px;
+
+  @include media-query(lap-and-up) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: -40px;
+  }
+}
+
+.flexGrid-item {
+  box-sizing: border-box;
+  padding-right: 0;
+  margin-bottom: 20px;
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  @include media-query(lap-and-up) {
+    padding-right: 20px;
+  }
+
+  @include media-query(desk) {
+    padding-right: 40px;
+    margin-bottom: 40px;
+  }
+
+  @for $i from 1 through $grid-columns {
+    $n: $grid-columns / $i;
+
+    @if $n % 1 == 0 {
+      &--#{$i}:nth-child(#{$n}n) {
+        padding-right: 0;
+      }
+    }
+
+    @include media-query(lap-and-up) {
+      &--#{$i} {
+        width: calc((100% / #{$grid-columns}) * #{$i});
+      }
+    }
+  }
+}
+
+// Below are some temporary styles so the old bootstrap grid could be removed
+// Struggling to identify where some blocks parents are set
+// Razor views where implemented: [Source/Electrolux.Web/Views/Shared/Blocks/TeaserModuleBlock.cshtml]
+.tempFloatColumn-mobileUp {
+  @include media-query(small-and-up) {
+    float: left;
+    min-height: 1px;
+    position: relative;
+  }
+}

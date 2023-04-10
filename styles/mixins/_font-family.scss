@@ -1,0 +1,101 @@
+@use 'sass:meta';
+
+$font-family-keyword-light: 'light';
+$font-family-keyword-regular: 'regular';
+$font-family-keyword-medium: 'medium';
+$font-family-keyword-semibold: 'semibold';
+$font-family-keyword-bold: 'bold';
+
+@function font-weight($weight: 400) {
+  @if $weight == 'light' or $weight == 100 or $weight == 200 {
+    $weight: if(
+      meta.variable-exists('light'),
+      $light,
+      if(meta.variable-exists('font-weight-light'), $font-weight-light, 200)
+    );
+  } @else if $weight == 400 or $weight == 'regular' {
+    $weight: if(
+      meta.variable-exists('regular'),
+      $regular,
+      if(meta.variable-exists('font-weight-regular'), $font-weight-regular, 400)
+    );
+  } @else if
+    $weight ==
+    'semi-bold' or
+    $weight ==
+    'semibold' or
+    $weight ==
+    'medium' or
+    $weight ==
+    500
+  {
+    $weight: if(
+      meta.variable-exists('semibold'),
+      $semibold,
+      if(
+        meta.variable-exists('font-weight-semibold'),
+        $font-weight-semibold,
+        500
+      )
+    );
+  } @else if $weight == 'bold' or $weight == 600 {
+    $weight: if(
+      meta.variable-exists('bold'),
+      $bold,
+      if(meta.variable-exists('font-weight-bold'), $font-weight-bold, 600)
+    );
+  }
+
+  @return $weight;
+}
+
+@mixin font-family($font-weight) {
+  $family: null;
+  $weight: null;
+
+  @if $font-weight == 'light' or $font-weight == 100 or $font-weight == 200 {
+    $family: $default-font-family-light;
+    $weight: if(
+      meta.variable-exists('light'),
+      $light,
+      if(meta.variable-exists('font-weight-light'), $font-weight-light, 200)
+    );
+  } @else if $font-weight == 400 or $font-weight == 'regular' {
+    $family: $default-font-family-regular;
+    $weight: if(
+      meta.variable-exists('regular'),
+      $regular,
+      if(meta.variable-exists('font-weight-regular'), $font-weight-regular, 400)
+    );
+  } @else if
+    $font-weight ==
+    'semi-bold' or
+    $font-weight ==
+    'semibold' or
+    $font-weight ==
+    500
+  {
+    $family: $default-font-family-semibold;
+    $weight: if(
+      meta.variable-exists('semibold'),
+      $semibold,
+      if(
+        meta.variable-exists('font-weight-semibold'),
+        $font-weight-semibold,
+        500
+      )
+    );
+  } @else if $font-weight == 'bold' or $font-weight == 600 {
+    $family: $default-font-family-bold;
+    $weight: if(
+      meta.variable-exists('bold'),
+      $bold,
+      if(meta.variable-exists('font-weight-bold'), $font-weight-bold, 600)
+    );
+  } @else if $font-weight == inherit {
+    $family: inherit;
+    $weight: inherit;
+  }
+  font-family: $family;
+  font-weight: $weight;
+}

@@ -1,0 +1,74 @@
+$mqs-min: (
+  // >= 320px
+  micro-and-up: $mq-micro,
+  // >= 480px
+  small-and-up: $mq-small,
+  // >= 537px
+  big-palm-and-up: $mq-big-palm,
+  // >= 768px
+  lap-and-up: $mq-medium,
+  // >= 1024px
+  desk: $mq-large,
+  // >= 1200px
+  desk-wide: $mq-extra-large,
+  // >= 1440px
+  giant: $mq-giant,
+  // >= 1920px
+  monster: $mq-monster
+);
+
+$mqs-max: (
+  // <= 479px
+  small: $mq-small - 1,
+  // <= 767px
+  portable: $mq-medium - 1,
+  // <= 1023px
+  collapse: $mq-large - 1
+);
+
+@mixin media-query($media-query, $printable: false) {
+  // Loop over sass map for minimum width mqs
+  // Using respond-min() mixin below
+  @each $mq, $width in $mqs-min {
+    @if $media-query == $mq {
+      @include respond-min($width, $printable) {
+        @content;
+      }
+    }
+  }
+
+  // Try to avoid using these mixins
+  // Loop over sass map for for maximum width mqs
+  // Using respond-max() mixin below
+  @each $mq, $width in $mqs-max {
+    @if $media-query == $mq {
+      @include respond-max($width) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin respond-min($width, $printable: false) {
+  // If $printable = 'print' then styles added to width and screen set
+  // plus all styles added for print. Couldn't just remove 'only screen and'
+  // as this wouldn't add larger breakpoints css on portrait view
+  @if $printable == "print" {
+    @media only screen and (min-width: $width) {
+      @content;
+    }
+    @media print {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-max($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}

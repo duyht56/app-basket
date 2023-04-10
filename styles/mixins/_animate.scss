@@ -1,0 +1,24 @@
+@mixin animate($name, $delay: 0s, $duration: 1s) {
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-fill-mode: both;
+  animation-delay: $delay;
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}

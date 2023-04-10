@@ -1,0 +1,177 @@
+// Default Animation settings
+[class*='animate'] {
+  animation-fill-mode: forwards;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+@keyframes animate-in-horizontal {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animateInHorizontal {
+  opacity: 0;
+  transform: translateX(50px);
+  animation-name: animate-in-horizontal;
+}
+
+@keyframes animate-in-vertical {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animateInVertical {
+  opacity: 0;
+  transform: translateY(50px);
+  animation-name: animate-in-vertical;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animateInFade {
+  opacity: 0;
+  animation-name: fade-in;
+}
+
+// Animations which use Vue transition or transition-group components
+
+// Fade in
+.fade-enter-active {
+  transition: opacity 0.3s;
+}
+
+.fade-leave-active {
+  transition: opacity 0.15s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// Slow fade
+.slow-fade-enter-active,
+.slow-fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.slow-fade-enter,
+.slow-fade-leave-to {
+  opacity: 0;
+}
+
+// Slide down
+.slide-enter-active,
+.slide-leave-active {
+  transition: max-height 0.5s;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.slide-enter,
+.slide-leave-to {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: transform 0.3s ease 0s;
+  will-change: transform;
+}
+
+.slide-right-enter,
+.slide-right-leave-to {
+  transform: translate3d(100%, 0, 0);
+}
+
+.slide-right-enter-to {
+  transform: translate3d(0, 0, 0);
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: transform 0.3s ease 0s;
+  will-change: transform;
+}
+
+.slide-left-enter,
+.slide-left-leave-to {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.slide-left-enter-to {
+  transform: translate3d(0, 0, 0);
+}
+
+// Horizontal slide
+.horizontal-slide-enter-active,
+.horizontal-slide-leave-active {
+  transition: max-width 0.5s ease, opacity 0.5s ease;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.horizontal-slide-enter,
+.horizontal-slide-leave-to {
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+}
+
+// Rotate
+.rotate-enter-active,
+.rotate-leave-active {
+  transition: transform 0.1s;
+}
+
+.rotate-enter {
+  transform: rotate(45deg);
+}
+
+.rotate-leave-to {
+  transform: rotate(0deg);
+}
+
+html:not(.no-js) {
+  [data-animation^='fade'] {
+    opacity: 0;
+    transition: opacity 0.4s, transform 0.8s;
+
+    &.elx-animate {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  [data-animation='fadeUp'] {
+    transform: translate3d(0, 110px, 0);
+  }
+
+  [data-animation='fadeUpSmall'] {
+    transform: translate3d(0, 55px, 0);
+  }
+}

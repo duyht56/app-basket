@@ -1,0 +1,9 @@
+{
+  "extends": "stylelint-config-recommended-scss",
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "no-empty-source": null,
+    "no-descending-specificity": null,
+    "scss/operator-no-newline-after": null
+  }
+}

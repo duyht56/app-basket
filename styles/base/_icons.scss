@@ -1,0 +1,29 @@
+$svg-icon-cta-chevron-circle: none !default;
+$svg-icon-cta-chevron-circle-stroke: $black !default;
+$svg-icon-cta-chevron-path: $black !default;
+$svg-icon-check-success-color: $black !default;
+$svg-icon-warning-failure-color: $black !default;
+
+.SvgIcon {
+  display: inline-block;
+  vertical-align: text-bottom;
+  width: 1.3em;
+  height: 1.3em;
+  fill: currentColor;
+
+  &--cta-chevron-right,
+  &--cta-chevron-left {
+    height: 24px;
+    width: 24px;
+
+    circle {
+      fill: $svg-icon-cta-chevron-circle;
+      stroke: $svg-icon-cta-chevron-circle-stroke;
+      stroke-width: 2px;
+    }
+
+    path {
+      fill: $svg-icon-cta-chevron-path;
+    }
+  }
+}

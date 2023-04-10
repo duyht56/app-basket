@@ -1,0 +1,39 @@
+// Base color
+
+$primary: var(--color-primary-100) !default;
+$secondary: var(--color-on-secondary-100) !default;
+$white: var(--color-white) !default;
+$black: var(--color-black);
+$danger: var(--color-danger-100) !default;
+$s: 1rem !default;
+
+// Font
+$default-font-family-light: 'Light', sans-serif !default;
+$default-font-family-regular: 'Regular', sans-serif !default;
+$default-font-family-semibold: 'Semibold', sans-serif !default;
+$default-font-family-bold: 'Bold', sans-serif !default;
+
+$light: 300 !default;
+$regular: 400 !default;
+$semibold: 500 !default;
+$bold: 600 !default;
+
+$line-height-heading: 1.2 !default;
+$line-height-body: 1.5 !default;
+
+$font-size: 93.75 !default; // percentage value (16 * 93.75% = 15px)
+$font-base: 16 * ($font-size / 100) !default; // converts our percentage to a pixel value i.e. 15px
+
+$enable-cyrillic-font-adjustment: false !default;
+$cyrillic-font-adjustment-ratio: 1 !default;
+
+// $mq-micro is used to target very small devices [ie iphone 5]
+// this could potentially be removed in the future
+$mq-micro: 320px !default;
+$mq-small: 480px !default;
+$mq-big-palm: 540px !default;
+$mq-medium: 768px !default;
+$mq-large: 1024px !default;
+$mq-extra-large: 1200px !default;
+$mq-giant: 1440px !default;
+$mq-monster: 1920px !default;

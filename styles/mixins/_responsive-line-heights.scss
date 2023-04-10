@@ -1,0 +1,26 @@
+@mixin responsive-line-heights($args: ()) {
+  $args: map.merge(
+    (
+      base: $line-height-body,
+      palm: null,
+      lap: null,
+      desk: null,
+    ),
+    $args
+  );
+  $mqs: (
+    big-palm-and-up: map.get($args, palm),
+    lap-and-up: map.get($args, lap),
+    desk: map.get($args, desk),
+  );
+
+  @include to-rem(line-height, map.get($args, base));
+
+  @each $mq, $line-height in $mqs {
+    @if $line-height {
+      @include media-query($mq) {
+        @include to-rem(line-height, $line-height);
+      }
+    }
+  }
+}

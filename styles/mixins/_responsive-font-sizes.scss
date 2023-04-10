@@ -1,0 +1,26 @@
+@mixin responsive-font-sizes($args: ()) {
+  $args: map.merge(
+    (
+      base: $font-base,
+      palm: null,
+      lap: null,
+      desk: null,
+    ),
+    $args
+  );
+  $mqs: (
+    big-palm-and-up: map.get($args, palm),
+    lap-and-up: map.get($args, lap),
+    desk: map.get($args, desk),
+  );
+
+  @include to-rem(font-size, map.get($args, base));
+
+  @each $mq, $font-size in $mqs {
+    @if $font-size {
+      @include media-query($mq) {
+        @include to-rem(font-size, $font-size);
+      }
+    }
+  }
+}

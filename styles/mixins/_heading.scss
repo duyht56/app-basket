@@ -1,0 +1,129 @@
+@mixin t-default-h1 {
+  line-height: $line-height-heading;
+  font-family: $default-font-family-semibold;
+  font-weight: $semibold;
+  @include to-rem(font-size, 28);
+
+  @include media-query(big-palm-and-up) {
+    @include to-rem(font-size, 36);
+  }
+
+  @include media-query(lap-and-up) {
+    @include to-rem(font-size, 54);
+  }
+}
+
+@mixin t-default-h2 {
+  line-height: $line-height-heading;
+  font-family: $default-font-family-semibold;
+  font-weight: $semibold;
+  @include to-rem(font-size, 24);
+
+  @include media-query(big-palm-and-up) {
+    @include to-rem(font-size, 30);
+  }
+
+  @include media-query(lap-and-up) {
+    @include to-rem(font-size, 40);
+  }
+}
+
+@mixin t-default-h3 {
+  line-height: $line-height-heading;
+  font-family: $default-font-family-semibold;
+  font-weight: $semibold;
+  @include to-rem(font-size, 22);
+
+  @include media-query(big-palm-and-up) {
+    @include to-rem(font-size, 26);
+  }
+
+  @include media-query(lap-and-up) {
+    @include to-rem(font-size, 32);
+  }
+}
+
+@mixin t-default-h4 {
+  line-height: $line-height-heading;
+  font-family: $default-font-family-semibold;
+  font-weight: $semibold;
+  @include to-rem(font-size, 20);
+
+  @include media-query(big-palm-and-up) {
+    @include to-rem(font-size, 22);
+  }
+
+  @include media-query(lap-and-up) {
+    @include to-rem(font-size, 26);
+  }
+}
+
+@mixin t-default-h5 {
+  line-height: $line-height-heading;
+  font-family: $default-font-family-semibold;
+  font-weight: $semibold;
+  @include to-rem(font-size, 18);
+
+  @include media-query(big-palm-and-up) {
+    @include to-rem(font-size, 18);
+  }
+
+  @include media-query(lap-and-up) {
+    @include to-rem(font-size, 20);
+  }
+}
+
+@mixin t-default-h6 {
+  line-height: $line-height-heading;
+  font-family: $default-font-family-semibold;
+  font-weight: $semibold;
+  @include to-rem(font-size, 16);
+
+  @include media-query(big-palm-and-up) {
+    @include to-rem(font-size, 16);
+  }
+
+  @include media-query(lap-and-up) {
+    @include to-rem(font-size, 16);
+  }
+}
+
+@mixin t-default-desc {
+  line-height: 1;
+  font-family: $default-font-family-regular;
+  font-weight: $regular;
+  @include to-rem(font-size, 15);
+
+  @include media-query(big-palm-and-up) {
+    @include to-rem(font-size, 15);
+  }
+
+  @include media-query(lap-and-up) {
+    @include to-rem(font-size, 15);
+  }
+}
+
+@mixin t-default-p {
+  line-height: $line-height-body;
+  font-family: $default-font-family-regular;
+  font-weight: $regular;
+  @include to-rem(font-size, 16);
+}
+
+@mixin header-text-styles {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .alpha,
+  .beta,
+  .gamma,
+  .delta,
+  .epsilon,
+  .zeta,
+  .desc {
+    @content;
+  }
+}

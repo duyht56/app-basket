@@ -1,0 +1,55 @@
+@use 'sass:list';
+
+@function calculate-rem($size) {
+  $remSize: $size / $font-base;
+
+  @return #{$remSize}rem;
+}
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function cyrillic-adjustment($num) {
+  @return ceil($cyrillic-font-adjustment-ratio * $num);
+}
+
+@mixin to-rem($property, $values...) {
+  $pxValues: ();
+  $remValues: ();
+
+  $pxValuesCyrillic: ();
+  $remValuesCyrillic: ();
+
+  @each $value in $values {
+    @if ($value == 'inherit') {
+      $pxValues: list.append($pxValues, #{$value});
+      $remValues: list.append($remValues, $value);
+      $pxValuesCyrillic: list.append($pxValuesCyrillic, #{$value});
+      $remValuesCyrillic: list.append($remValuesCyrillic, $value);
+    } @else {
+      $unitlessValue: strip-unit($value);
+      $pxValues: list.append($pxValues, #{$unitlessValue}px);
+      $remValues: list.append($remValues, calculate-rem($unitlessValue));
+
+      $valueCyrillic: cyrillic-adjustment($unitlessValue);
+      $pxValuesCyrillic: list.append($pxValuesCyrillic, #{$valueCyrillic}px);
+      $remValuesCyrillic: list.append(
+        $remValuesCyrillic,
+        calculate-rem($valueCyrillic)
+      );
+    }
+  }
+
+  #{$property}: $pxValues;
+  #{$property}: $remValues;
+
+  @if ($enable-cyrillic-font-adjustment) {
+    [lang='ru-RU'] &,
+    [lang='bg-BG'] &,
+    [lang='ua-UK'] & {
+      #{$property}: $pxValuesCyrillic;
+      #{$property}: $remValuesCyrillic;
+    }
+  }
+}
